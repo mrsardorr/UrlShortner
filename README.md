@@ -1,1 +1,1 @@
-# UrlShortner
+This is simple url shortner
