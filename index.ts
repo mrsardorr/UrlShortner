@@ -1,6 +1,6 @@
 import express from "express"
-import http from "http"
-import mongodb from "mongodb"
+import * as http from 'http'
+import * as mongodb from "mongodb"
 
 const uri = "mongodb+srv://user:user@cluster0.fefhymw.mongodb.net/?retryWrites=true&w=majority"
 const app = express()

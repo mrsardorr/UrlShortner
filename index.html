@@ -1,31 +1,29 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>url shortner</title>
-    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
-</head>
-<body>
-    <h1>Url shorter</h1>
-    URL: <input type="text" id="url">
-    <button onclick="shorten()">short!!!</button>
-    <div class="short"></div>
-</body>
-<script>
-    function shorten(){
-        let input = document.getElementById("url");
-        let url = input.value;
-        $.ajax({
-            url:"/r",
-            method:"POST",
-            contentType:"text/plain",
-            data:url
-        }).done(function(data){
-            let short = document.getElementById("short");
-            let url = window.location.origin + "/r/" + data.code;
-            short.innerHTML = '<a href="'+url+'</a>'
-        })
-    }
-</script>
+<html>
+    <head>
+        <title>URL shortener</title>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    </head>
+    <body>
+        <h1>URL shorter</h1>
+        URL: <input type="text" id="url">
+        <button onclick="shorten()">Shorten!</button>
+        <div id="short"></div>
+    </body>
+    <script>
+        function shorten() {
+            var input = document.getElementById('url');
+            var url = input.value;
+            $.ajax({
+                url: '/r',
+                method: 'POST',
+                contentType: 'text/plain',
+                data: url
+            }).done(function(data) {
+                var short = document.getElementById('short');
+                var url = window.location.origin + '/r/' + data.code;
+                short.innerHTML = '<a href="' + url + '">' + url + '</a>';
+            });
+
+        }
+    </script>
 </html>
