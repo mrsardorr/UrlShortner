@@ -11,10 +11,11 @@ function strGenerator(count: number): string {
     return Array.from({ length: count }, () => alphabet[Math.floor(Math.random() * alphabet.length)]).join('');
 }
 
-const randomLetters = strGenerator(5);
-console.log(randomLetters);
+app.use(express.text({type:"*/*"}))
+app.use(express.static(__dirname))
 
-let database;
+
+let database:any;
 (async ()=>{
     const mongoClient = mongodb.MongoClient;
     const db = await mongoClient.connect(uri)
@@ -23,11 +24,17 @@ let database;
 
 
 app.post("/r",async (req,res)=>{
-
+    const url = req.body
+    const code = strGenerator(5);
+    const obj = {url,code};
+    await database.collection("urls").insertOne(obj);
+    res.send(obj)
 })
 
 app.get("/r/:code",async (req,res)=>{
-    
+    const code = req.params.code;
+    const result = await database.collection("urls").findOne({code});
+    res.redirect(result.url)
 })
 
 server.listen(1234)
