@@ -6,6 +6,14 @@ const uri = "mongodb+srv://user:user@cluster0.fefhymw.mongodb.net/?retryWrites=t
 const app = express()
 const server = http.createServer(app);
 
+function strGenerator(count: number): string {
+    const alphabet = 'abcdefghijklmnopqrstuvwxyz';
+    return Array.from({ length: count }, () => alphabet[Math.floor(Math.random() * alphabet.length)]).join('');
+}
+
+const randomLetters = strGenerator(5);
+console.log(randomLetters);
+
 let database;
 (async ()=>{
     const mongoClient = mongodb.MongoClient;
