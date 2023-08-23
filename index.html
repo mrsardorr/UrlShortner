@@ -2,12 +2,13 @@
     <head>
         <title>URL shortener</title>
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <link rel="stylesheet" href="style.css">
     </head>
     <body>
         <h1>URL shorter</h1>
-        URL: <input type="text" id="url">
-        <button onclick="shorten()">Shorten!</button>
-        <div id="short"></div>
+        <input  type="text" id="url" value="https://"> <br>
+        <button onclick="shorten()">Short!</button>
+        <div id="short"><a href="http://localhost:1234/r/xrvzh">http://localhost:1234/r/xrvzh</a></div>
     </body>
     <script>
         function shorten() {
